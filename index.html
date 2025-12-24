@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Pelanggaran Privasi - Kelompok 6</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --bg-color: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            line-height: 1.6;
+            padding-top: 70px; /* Offset for sticky navbar */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary-color);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+        .nav-link {
+            color: var(--secondary-color) !important;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #fff 0%, #e9ecef 100%);
+            padding: 80px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .uni-logo {
+            font-size: 80px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Card Styling */
+        .content-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: #fff;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #fff;
+            border-bottom: 2px solid var(--accent-color);
+            font-weight: 700;
+            font-family: 'Merriweather', serif;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            padding: 20px 25px;
+            border-radius: 12px 12px 0 0 !important;
+        }
+        .card-body {
+            padding: 25px;
+        }
+
+        /* Typography Helper */
+        .section-title {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        .text-justify {
+            text-align: justify;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        footer h5 {
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Smooth Scroll offset */
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="100" tabindex="0">
+
+    <!-- Navbar -->
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-university me-2"></i>Kelompok 6
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kata-pengantar">Kata Pengantar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pendahuluan">Pendahuluan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#landasan-teori">Landasan Teori</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pembahasan">Pembahasan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#penutup">Penutup</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#anggota">Anggota</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section text-center">
+        <div class="container">
+            <div class="uni-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1 class="display-5 fw-bold mb-3">ANALISIS PELANGGARAN PRIVASI PADA KASUS KEBOCORAN 70.000 DATA KTP DI INDONESIA</h1>
+            <p class="lead text-muted mb-4">Tugas Besar Mata Kuliah Etika Profesi</p>
+            <div class="d-flex justify-content-center gap-3 text-secondary">
+                <span><i class="fas fa-chalkboard-teacher me-2"></i>Dosen: Fidya Eka Prahesti, M.T</span>
+                <span class="mx-2">|</span>
+                <span><i class="fas fa-building me-2"></i>Universitas Nusantara PGRI Kediri</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Kata Pengantar -->
+        <section id="kata-pengantar">
+            <div class="card content-card">
+                <div class="card-header">
+                    Kata Pengantar
+                </div>
+                <div class="card-body text-justify">
+                    <p>
+                        Puji syukur ke hadirat Tuhan Yang Maha Esa atas segala rahmat dan karunia-Nya, sehingga kami dapat menyelesaikan makalah ini dengan tepat waktu. Makalah ini disusun untuk memenuhi tugas mata kuliah <strong>Etika Profesi</strong>.
+                    </p>
+                    <p>
+                        Kami mengucapkan terima kasih yang sebesar-besarnya kepada Ibu <strong>Fidya Eka Prahesti, M.T</strong> selaku dosen pengampu yang telah memberikan bimbingan dan arahan selama proses pembelajaran. Bimbingan beliau sangat berharga dalam membantu kami memahami aspek-aspek etika profesi yang relevan dengan studi kasus yang kami angkat.
+                    </p>
+                    <p>
+                        Dalam makalah ini, kami membahas topik mengenai <strong>"Analisis Pelanggaran Privasi pada Kasus Kebocoran 70.000 Data KTP di Indonesia"</strong>. Kami menyadari bahwa perlindungan data pribadi merupakan isu krusial di era digital saat ini. Harapan kami, makalah ini dapat memberikan wawasan mengenai penyebab, dampak, serta pentingnya etika dan hukum dalam menjaga keamanan data pribadi.
+                    </p>
+                    <p>
+                        Kami menyadari masih terdapat kekurangan dalam penyusunan makalah ini. Oleh karena itu, kritik dan saran yang membangun sangat kami harapkan untuk perbaikan di masa mendatang.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAB I -->
+        <section id="pendahuluan">
+            <div class="card content-card">
+                <div class="card-header">
+                    BAB I: Pendahuluan
+                </div>
+                <div class="card-body">
+                    <h5 class="section-title">Latar Belakang</h5>
+                    <p class="text-justify">
+                        Perkembangan teknologi informasi membawa perubahan signifikan dalam berbagai aspek kehidupan. Namun, kemajuan ini juga menghadirkan tantangan baru, terutama terkait keamanan data. Data pribadi seperti KTP sangat sensitif karena memuat identitas kependudukan yang vital. Kasus kebocoran <strong>70.000 data KTP pada Oktober 2025</strong> menunjukkan adanya celah keamanan serius dalam sistem pengelolaan data di Indonesia. Masalah ini bukan hanya sekadar masalah teknis, tetapi juga menyangkut aspek hukum dan etika profesi. Kehadiran <strong>UU PDP No 27 Tahun 2022</strong> menjadi landasan hukum yang penting untuk menindaklanjuti kasus seperti ini.
+                    </p>
+
+                    <h5 class="section-title mt-4">Rumusan Masalah</h5>
+                    <ol>
+                        <li>Apa penyebab utama pelanggaran privasi pada kasus kebocoran data KTP ini?</li>
+                        <li>Apa dampak yang ditimbulkan bagi korban dan masyarakat luas?</li>
+                        <li>Bagaimana upaya perlindungan dan penanggulangan yang dapat dilakukan?</li>
+                    </ol>
+
+                    <h5 class="section-title mt-4">Tujuan</h5>
+                    <p>
+                        Makalah ini bertujuan untuk mengetahui penyebab, dampak, dan upaya perlindungan data KTP agar kejadian serupa tidak terulang, serta menganalisisnya dari sudut pandang etika profesi dan hukum yang berlaku.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAB II -->
+        <section id="landasan-teori">
+            <div class="card content-card">
+                <div class="card-header">
+                    BAB II: Landasan Teori
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5 class="fw-bold"><i class="fas fa-user-shield me-2 text-primary"></i>Konsep Privasi</h5>
+                            <p class="text-justify">
+                                Privasi adalah hak individu untuk mengendalikan informasi tentang diri mereka sendiri. Menurut <strong>Solove & Schwartz (2020)</strong>, privasi bukan sekadar hak untuk menyendiri, tetapi kemampuan untuk menentukan kapan, bagaimana, dan sejauh mana informasi pribadi dikomunikasikan kepada orang lain.
+                            </p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5 class="fw-bold"><i class="fas fa-lock me-2 text-primary"></i>Keamanan Informasi</h5>
+                            <p class="text-justify">
+                                Keamanan informasi bertujuan untuk melindungi kerahasiaan (confidentiality), integritas (integrity), dan ketersediaan (availability) data. Standar internasional seperti <strong>ISO/IEC 27001:2022</strong> memberikan kerangka kerja untuk mengelola risiko keamanan informasi.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-2">
+                        <strong>Definisi Penting:</strong>
+                        <ul class="mb-0 mt-2">
+                            <li><strong>Data Pribadi (UU PDP):</strong> Data tentang orang perseorangan yang teridentifikasi atau dapat diidentifikasi secara tersendiri atau dikombinasi dengan informasi lainnya.</li>
+                            <li><strong>Pelanggaran Privasi:</strong> Tindakan mengakses, mengumpulkan, atau menyebarkan data pribadi tanpa izin.</li>
+                            <li><strong>Kebocoran Data:</strong> Insiden keamanan di mana data sensitif diakses tanpa otorisasi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAB III -->
+        <section id="pembahasan">
+            <div class="card content-card">
+                <div class="card-header">
+                    BAB III: Pembahasan
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5 class="section-title">Analisis Penyebab</h5>
+                        <p class="text-justify">
+                            Berdasarkan analisis, kebocoran 70.000 data KTP disebabkan oleh beberapa faktor krusial. Pertama, <strong>kegagalan sistem keamanan</strong> yang tidak memadai dalam memproteksi basis data. Kedua, adanya <strong>celah supply chain pihak ketiga</strong> (ENISA, 2021), di mana vendor atau mitra kerja memiliki standar keamanan yang lebih rendah sehingga menjadi pintu masuk peretas. Ketiga, <strong>lemahnya patching</strong> atau pembaruan sistem yang terlambat menutup kerentanan. Terakhir, motif serangan didorong oleh <strong>keuntungan finansial (financial gain)</strong> melalui penjualan data di pasar gelap.
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="section-title">Dampak</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-light h-100">
+                                    <h6 class="fw-bold text-danger">Identity Theft</h6>
+                                    <p class="small mb-0">Pencurian identitas untuk melakukan penipuan, pinjaman online ilegal, atau tindakan kriminal lain atas nama korban.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-light h-100">
+                                    <h6 class="fw-bold text-danger">Kerugian Finansial</h6>
+                                    <p class="small mb-0">Dampak langsung berupa kehilangan uang akibat pembobolan rekening atau beban hutang yang tidak dilakukan korban.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-3 border rounded bg-light h-100">
+                                    <h6 class="fw-bold text-danger">Kepercayaan Publik</h6>
+                                    <p class="small mb-0">Turunnya reputasi institusi dan kepercayaan masyarakat terhadap ekosistem digital (OECD, 2022).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h5 class="section-title">Upaya Penanggulangan</h5>
+                        <ul>
+                            <li><strong>Teknis:</strong> Penerapan Enkripsi data (at rest & in transit) dan implementasi standar keamanan ISO 27001.</li>
+                            <li><strong>Hukum:</strong> Penegakan UU PDP No 27 Tahun 2022 secara tegas kepada pengendali data yang lalai.</li>
+                            <li><strong>Sosial:</strong> Peningkatan Literasi Digital masyarakat agar lebih berhati-hati dalam membagikan data pribadi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAB IV -->
+        <section id="penutup">
+            <div class="card content-card">
+                <div class="card-header">
+                    BAB IV: Penutup
+                </div>
+                <div class="card-body">
+                    <h5 class="section-title">Kesimpulan</h5>
+                    <p class="text-justify">
+                        Kebocoran data 70.000 KTP merupakan pelanggaran privasi serius yang diakibatkan oleh kombinasi kelalaian teknis, lemahnya pengawasan pihak ketiga, dan tata kelola keamanan yang buruk. Hal ini menuntut perlunya penegakan hukum yang tegas sesuai peraturan yang berlaku.
+                    </p>
+
+                    <h5 class="section-title mt-4">Saran</h5>
+                    <div class="d-flex flex-column gap-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Melakukan audit keamanan sistem informasi secara berkala.</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Menerapkan enkripsi yang kuat pada database kependudukan.</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Peningkatan kesadaran (awareness) dan edukasi masyarakat mengenai perlindungan data pribadi.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daftar Pustaka -->
+        <section id="daftar-pustaka">
+            <div class="card content-card">
+                <div class="card-header bg-secondary text-white">
+                    <i class="fas fa-book me-2"></i>Daftar Pustaka
+                </div>
+                <div class="card-body">
+                    <ol class="list-group list-group-numbered list-group-flush">
+                        <li class="list-group-item">CNBC Indonesia. (2025). <em>70.000 data KTP bocor di internet</em>.</li>
+                        <li class="list-group-item">ENISA. (2021). <em>Threat Landscape 2021</em>.</li>
+                        <li class="list-group-item">ISO. (2022). <em>ISO/IEC 27001:2022 - Information security, cybersecurity and privacy protection</em>.</li>
+                        <li class="list-group-item">Republik Indonesia. (2022). <em>UU No 27 Tahun 2022 tentang Pelindungan Data Pribadi (PDP)</em>.</li>
+                        <li class="list-group-item">Solove, D. J. (2021). <em>A taxonomy of privacy</em>.</li>
+                        <li class="list-group-item">OECD. (2022). <em>Guidelines on protection of privacy and transborder flows of personal data</em>.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer / Anggota -->
+    <footer id="anggota">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5 class="fw-bold">Tentang Kami</h5>
+                    <p>Mahasiswa Program Studi Sistem Informasi<br>Universitas Nusantara PGRI Kediri.</p>
+                    <p class="small">&copy; 2025 Kelompok 6. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="fw-bold">Anggota Kelompok 6</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Nanda Wahyu Nur Rokhim (2413030085)</li>
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Moh Fadhil Zanial Fahlevi (2413030086)</li>
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Muhammad Wika Valentino (2413030089)</li>
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Satria Kharisma Adi Saputra (2413030091)</li>
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Alvis Aditya (2413030097)</li>
+                        <li class="mb-2"><i class="fas fa-user me-2 text-info"></i>Damar Riski Agastya (2413030099)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
